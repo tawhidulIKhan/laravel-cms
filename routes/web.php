@@ -23,7 +23,7 @@ Route::get('/register','AuthController@resgisterShow')->name('register');
 Route::post('/register','AuthController@resgisterStore');
 Route::get('/login','AuthController@loginShow')->name('login');
 Route::post('/login','AuthController@loginStore');
-
+Route::get('/verify/{token}','AuthController@verify')->name('verify');
 // Dashboard Route 
 
 Route::group(['prefix'=>'/admin/'],function(){
