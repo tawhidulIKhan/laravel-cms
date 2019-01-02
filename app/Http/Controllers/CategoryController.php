@@ -14,7 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $data = [];
+        return view('backend/categories',$data);
     }
 
     /**
@@ -24,7 +25,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend/create-category');    
+    
     }
 
     /**
@@ -46,7 +48,8 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        return view('backend/category',['category',$category]);
+
     }
 
     /**
@@ -57,7 +60,8 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('backend/edit-category',$category);
+
     }
 
     /**

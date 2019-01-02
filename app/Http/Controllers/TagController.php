@@ -14,7 +14,8 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
+        $data = [];
+        return view('backend/tags',$data);
     }
 
     /**
@@ -24,7 +25,8 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend/create-tag');    
+
     }
 
     /**
@@ -46,7 +48,8 @@ class TagController extends Controller
      */
     public function show(Tag $tag)
     {
-        //
+        return view('backend/tag',['tag',$tag]);
+
     }
 
     /**
@@ -57,7 +60,8 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
-        //
+        return view('backend/edit-tag',$tag);
+
     }
 
     /**

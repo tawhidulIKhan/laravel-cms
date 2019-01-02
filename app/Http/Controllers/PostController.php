@@ -13,8 +13,9 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {   
+        $data = [];
+        return view('backend/posts',$data);
     }
 
     /**
@@ -24,7 +25,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend/create-post');    
     }
 
     /**
@@ -46,7 +47,8 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view('backend/post',['post',$post]);
+
     }
 
     /**
@@ -57,7 +59,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('backend/edit-post',$post);
+
     }
 
     /**
