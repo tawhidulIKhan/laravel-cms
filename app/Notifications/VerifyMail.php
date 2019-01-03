@@ -42,9 +42,10 @@ class VerifyMail extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Verify Now', route('verify',$this->user->email_varification_token))
-                    ->line('Thank you for using our application!');
+                    ->greeting(sprintf('Hi , %s',$this->user->firstname))
+                    ->line('Your registration have been successfull , now verify your account from below link.')
+                    ->action('Verify Now', url(route('verify',$this->user->email_verification_token)))
+                    ->line('Thanks for using our CMS App!');
     }
 
     /**
