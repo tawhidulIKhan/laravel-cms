@@ -11,10 +11,10 @@
 
             {{ cms_notification($errors) }}
 
-            <h4 class="mt-3">login</h4>
+            <h4 class="mt-3">Reset Your Password</h4>
 
 
-            <form action="{{ route('login') }}" method="post" class="shadow p-4 bg-white my-5">
+            <form action="{{ route('passwordResetToken') }}" method="post" class="shadow p-4 bg-white my-5">
 
             @csrf
 
@@ -25,14 +25,9 @@
                 placeholder="Type Email" aria-describedby="helpId">
               </div>
 
-              <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" class="form-control" 
-                aria-describedby="helpId" placeholder="Enter Password">
-              </div>
 
-              <button type="submit" class="btn btn-primary">Login</button>
-            <a href="{{ route('passwordResetToken') }}">forgot your password?</a>
+              <button type="submit" class="btn btn-primary">Send</button>
+       
             </form>
           </div>
       </div>

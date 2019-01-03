@@ -6,9 +6,11 @@ use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Notifications\VerifyMail;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use App\Notifications\PasswordResetNotify;
 
 class AuthController extends Controller
 {
@@ -172,13 +174,13 @@ class AuthController extends Controller
                 'password' => $request->password
             ];
 
-            $user = User::where($credentials)->get();
-
+            $user = User::where(
+                'email' , $request->email)->first();
 
             if(!$user){
                 session()->flash('type','danger');
                 session()->flash('message','User not found');
-                return redirect()->back();
+                return redirect()->route('login');
             }
 
 
@@ -200,7 +202,116 @@ class AuthController extends Controller
             }
     
         }
-    
-    
+
+     // Password Reset Token
+     
+     public function passwordResetToken(){
+        return view('frontend/password/reset-token');
+     }
+
+    //  Password Reset Token Send
+
+    public function passwordResetTokenSend(Request $request){
+        
+        // Check User Exists
+
+        $user = User::where('email',$request->email)->first();
+        
+        if(!$user){
+
+            session()->flash('type','danger');
+            session()->flash('message','Email not found');
+            return redirect()->route('passwordResetToken');
+        }
+        
+        $token = str_random(20);
+        
+        $tokenExists = DB::table('password_resets')->where('email',$request->email)->first();
+        
+        
+        if($tokenExists){
+
+            session()->flash('type','danger');
+            session()->flash('message','Token Already sent');
+            return redirect()->route('passwordResetToken');
+
+        }
+
+
+        DB::table('password_resets')->insert([
+            'email' => $request->email,
+            'token' => $token,
+            'created_at' => Carbon::now()
+        ]);
+
+
+
+        $user->notify(new PasswordResetNotify($token));
+
+        session()->flash('type','success');
+        session()->flash('message','Password Reset Token sent , check your email.');
+        return redirect()->route('passwordResetToken');
+
+    }
+
+
+    // Password Reset 
+
+    public function passwordReset($token){
+        
+        if($token === null){
+            session()->flash('type','danger');
+            session()->flash('message','Invalid Token');
+            return redirect()->route('login');
+        }
+
+        $tokenExists = DB::table('password_resets')->where('token',$token)->first();
+
+        if($tokenExists === null){
+            session()->flash('type','danger');
+            session()->flash('message','Invalid Token');
+            return redirect()->route('login');
+        }
+
+        return view('frontend/password/reset',['token'=>$token,'email' => $tokenExists->email]);
+    }
+
+
+    // Password Reset Update 
+
+    public function passwordResetUpdate(Request $request){
+
+        $validator = Validator::make($request->all(),[
+            'email' => 'required|email',
+            'password' => 'required|min:6|confirmed',
+        ]);
+
+        if($validator->fails()){
+
+            return redirect()->back()->withErrors($validator);
+        }
+
+        $validToken = DB::table('password_resets')->where('token',$request->token)->first();
+        
+        if(!$validToken){
+        
+            session()->flash('type','danger');
+            session()->flash('message','Invalid Token');
+            return redirect()->route('login');
+        
+        }
+
+        $user = User::where('email',$request->email)->first();
+        $user->update([
+            'password' => Hash::make($request->password)
+        ]);
+
+        DB::table('password_resets')->where('email',$request->email)->delete();
+
+        session()->flash('type','success');
+        session()->flash('message','Password Successfully Updated');
+        return redirect()->route('login');
+        
+    }
 
 }
