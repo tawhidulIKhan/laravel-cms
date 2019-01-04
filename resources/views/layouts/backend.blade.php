@@ -249,13 +249,24 @@
                             </a>
                             <ul class="dropdown-menu dropdown-user">
                                 <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                                    <ul>
+                                        <li>test</li>
+                                    </ul>
                                 </li>
                                 <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                                 </li>
                                 <li class="divider"></li>
-                                <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                                <li>
+                                    
+                                <form action="{{ route('logout') }}" method="post">
+                                        @csrf
+                                        <button class="btn btn-link" type="submit"><i class="fa fa-sign-out fa-fw"></i> Logout</button>
+
+                                    </form>
+                                
                                 </li>
                             </ul>
+                            
                             <!-- /.dropdown-user -->
                         </li>
                         <!-- /.dropdown -->
@@ -375,21 +386,21 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('backend/vendor/jquery/jquery.min.js') }}"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('backend/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="{{ asset('vendor/metisMenu/metisMenu.min.js') }}"></script>
+    <script src="{{ asset('backend/vendor/metisMenu/metisMenu.min.js') }}"></script>
 
     <!-- Morris Charts JavaScript -->
-    <script src="{{ asset('vendor/raphael/raphael.min.js') }}"></script>
-    <script src="{{ asset('vendor/morrisjs/morris.min.js') }}"></script>
+    <script src="{{ asset('backend/vendor/raphael/raphael.min.js') }}"></script>
+    <script src="{{ asset('backend/vendor/morrisjs/morris.min.js') }}"></script>
     <script src="{{ asset('data/morris-data.js') }}"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="{{ asset('dist/js/sb-admin-2.js') }}"></script>
+    <script src="{{ asset('backend/js/sb-admin-2.js') }}"></script>
 
 </body>
 

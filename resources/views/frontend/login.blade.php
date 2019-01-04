@@ -31,8 +31,16 @@
                 aria-describedby="helpId" placeholder="Enter Password">
               </div>
 
+            
+              <div class="form-check form-check-inline w-100 mb-3">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" name="remember" id="remember"> Remember me
+                </label>
+              </div>
+
               <button type="submit" class="btn btn-primary">Login</button>
-            <a href="{{ route('passwordResetToken') }}">forgot your password?</a>
+
+            <a href="{{ route('passwordResetToken') }}" class="ml-2">forgot your password?</a>
             </form>
           </div>
       </div>

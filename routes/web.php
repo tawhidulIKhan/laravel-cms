@@ -23,6 +23,7 @@ Route::get('/register','AuthController@resgisterShow')->name('register');
 Route::post('/register','AuthController@resgisterStore');
 Route::get('/login','AuthController@loginShow')->name('login');
 Route::post('/login','AuthController@loginStore');
+Route::post('/logout','AuthController@logout')->name('logout');
 Route::get('/verify/{token}','AuthController@verify')->name('verify');
 Route::get('/verify-again','AuthController@verifyAgain')->name('verifyAgain');
 Route::post('/verify-again','AuthController@resendVerification');
@@ -37,7 +38,7 @@ Route::post('/password/reset/update','AuthController@passwordResetUpdate');
 
 // Dashboard Route 
 
-Route::group(['prefix'=>'/admin/'],function(){
+Route::group(['prefix'=>'/admin/','middleware'=>'auth'],function(){
     
     // Display Homepage
     Route::get('/','DashboardController@dashboardShow')->name('dashboard');

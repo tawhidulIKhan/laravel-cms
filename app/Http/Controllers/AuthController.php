@@ -314,4 +314,12 @@ class AuthController extends Controller
         
     }
 
+    // Logout
+
+    public function logout(){
+        
+        auth()->logout();
+        return redirect()->route('login');
+    }
+
 }
