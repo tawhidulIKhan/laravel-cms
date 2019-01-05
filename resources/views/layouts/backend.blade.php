@@ -33,6 +33,8 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <!-- jQuery -->
+    <script src="{{ asset('backend/vendor/jquery/jquery.min.js') }}"></script>
 </head>
 
 <body>
@@ -290,7 +292,68 @@
                                 <li>
                                     <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                                 </li>
+
+
+                                {{-- Category Start --}}
+                            
                                 <li>
+                                        <a href="#">
+                                            <i class="fa fa-tags    "></i>
+                                            Categories<span class="fa arrow"></span></a>
+                                        <ul class="nav nav-second-level">
+                                            <li>
+                                            <a href="{{ route('categories.index') }}">All Categories</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('categories.create') }}">Add new category</a>
+                                            </li>
+                                        </ul>
+                                        <!-- /.nav-second-level -->
+                                    </li>
+                                
+                                    {{-- Category End --}}
+
+                                {{-- Tag Start --}}
+                            
+                                <li>
+                                        <a href="#">
+                                            <i class="fa fa-tags    "></i>
+                                            Tags<span class="fa arrow"></span></a>
+                                        <ul class="nav nav-second-level">
+                                            <li>
+                                                <a href="{{ route('tags.index') }}">All Tags</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('tags.create') }}">Add new tag</a>
+                                            </li>
+                                        </ul>
+                                        <!-- /.nav-second-level -->
+                                    </li>
+                                
+                                    {{-- Tag End --}}
+
+                                    
+                                {{-- Posts Start --}}
+                            
+                            <li>
+                                    <a href="#">
+                                        
+                                        <i class="fa fa-book" aria-hidden="true"></i>
+                                        Posts<span class="fa arrow"></span></a>
+                                    <ul class="nav nav-second-level">
+                                        <li>
+                                            <a href="{{ route('posts.index') }}">All Posts</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('posts.create') }}">Add new post</a>
+                                        </li>
+                                    </ul>
+                                    <!-- /.nav-second-level -->
+                                </li>
+                            
+                                {{-- Posts End --}}
+
+                            <li>
                                     <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
                                     <ul class="nav nav-second-level">
                                         <li>
@@ -385,8 +448,6 @@
     </div>
     <!-- /#wrapper -->
 
-    <!-- jQuery -->
-    <script src="{{ asset('backend/vendor/jquery/jquery.min.js') }}"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="{{ asset('backend/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
@@ -402,6 +463,7 @@
     <!-- Custom Theme JavaScript -->
     <script src="{{ asset('backend/js/sb-admin-2.js') }}"></script>
 
+        
 </body>
 
 </html>

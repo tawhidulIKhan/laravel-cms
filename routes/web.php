@@ -48,7 +48,13 @@ Route::group(['prefix'=>'/admin/','middleware'=>'auth'],function(){
 
     // Post
     Route::resource('/categories','CategoryController');
+    // Category Search
 
+    Route::post('/categories/categorySearch','CategoryController@categorySearch')->name('categories.categorySearch');
+    Route::post('/categories/limit','CategoryController@categoryLimit')->name('categories.categoryLimit');
     // Tags
     Route::resource('/tags','TagController');
+    Route::post('/tags/tagSearch','TagController@tagSearch')->name('tags.tagSearch');
+    Route::post('/tags/limit','TagController@tagLimit')->name('tags.tagLimit');
+
 });
