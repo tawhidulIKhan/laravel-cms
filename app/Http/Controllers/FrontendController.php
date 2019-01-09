@@ -17,7 +17,7 @@ class FrontendController extends Controller
         //     return Post::paginate(10);
         // });
         
-        $data["posts"] = Post::paginate(10);
+        $data["posts"] = Post::orderBy('created_at','desc')->paginate(10);
 
 
         $data["categories"] = Category::all();
