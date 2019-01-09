@@ -12,456 +12,98 @@
     <title>SB Admin 2 - Bootstrap Admin Theme</title>
 
     <!-- Bootstrap Core CSS -->
-<link href="{{ asset('backend/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+{{-- <link href="{{ asset('backend/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet"> --}}
+    
+    <link href="{{ asset('backend/css/backend-app.css') }}" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
     <link href="{{ asset('backend/vendor/metisMenu/metisMenu.min.css') }}" rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <link href="{{ asset('backend/css/sb-admin-2.css') }}" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
     <link href="{{ asset('backend/vendor/morrisjs/morris.css') }}" rel="stylesheet">
-
-    <!-- Custom Fonts -->
+     <!-- Custom Fonts -->
     <link href="{{ asset('backend/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('backend/css/tail.select-default.css') }}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css" rel="stylesheet">
+    <script src="{{ asset('backend/js/tail.select.min.js') }}"></script>
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- jQuery -->
-    <script src="{{ asset('backend/vendor/jquery/jquery.min.js') }}"></script>
+    
 </head>
 
 <body>
 
-    <div id="wrapper">
+    <div id="wrapper" class="backend">
 
-                <!-- Navigation -->
-                <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="index.html">SB Admin v2.0</a>
-                    </div>
-                    <!-- /.navbar-header -->
-        
-                    <ul class="nav navbar-top-links navbar-right">
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
-                            </a>
-                            <ul class="dropdown-menu dropdown-messages">
-                                <li>
-                                    <a href="#">
-                                        <div>
-                                            <strong>John Smith</strong>
-                                            <span class="pull-right text-muted">
-                                                <em>Yesterday</em>
-                                            </span>
-                                        </div>
-                                        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                                    </a>
-                                </li>
-                                <li class="divider"></li>
-                                <li>
-                                    <a href="#">
-                                        <div>
-                                            <strong>John Smith</strong>
-                                            <span class="pull-right text-muted">
-                                                <em>Yesterday</em>
-                                            </span>
-                                        </div>
-                                        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                                    </a>
-                                </li>
-                                <li class="divider"></li>
-                                <li>
-                                    <a href="#">
-                                        <div>
-                                            <strong>John Smith</strong>
-                                            <span class="pull-right text-muted">
-                                                <em>Yesterday</em>
-                                            </span>
-                                        </div>
-                                        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                                    </a>
-                                </li>
-                                <li class="divider"></li>
-                                <li>
-                                    <a class="text-center" href="#">
-                                        <strong>Read All Messages</strong>
-                                        <i class="fa fa-angle-right"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                            <!-- /.dropdown-messages -->
-                        </li>
-                        <!-- /.dropdown -->
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
-                            </a>
-                            <ul class="dropdown-menu dropdown-tasks">
-                                <li>
-                                    <a href="#">
-                                        <div>
-                                            <p>
-                                                <strong>Task 1</strong>
-                                                <span class="pull-right text-muted">40% Complete</span>
-                                            </p>
-                                            <div class="progress progress-striped active">
-                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                                                    <span class="sr-only">40% Complete (success)</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="divider"></li>
-                                <li>
-                                    <a href="#">
-                                        <div>
-                                            <p>
-                                                <strong>Task 2</strong>
-                                                <span class="pull-right text-muted">20% Complete</span>
-                                            </p>
-                                            <div class="progress progress-striped active">
-                                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-                                                    <span class="sr-only">20% Complete</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="divider"></li>
-                                <li>
-                                    <a href="#">
-                                        <div>
-                                            <p>
-                                                <strong>Task 3</strong>
-                                                <span class="pull-right text-muted">60% Complete</span>
-                                            </p>
-                                            <div class="progress progress-striped active">
-                                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                                    <span class="sr-only">60% Complete (warning)</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="divider"></li>
-                                <li>
-                                    <a href="#">
-                                        <div>
-                                            <p>
-                                                <strong>Task 4</strong>
-                                                <span class="pull-right text-muted">80% Complete</span>
-                                            </p>
-                                            <div class="progress progress-striped active">
-                                                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                                                    <span class="sr-only">80% Complete (danger)</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="divider"></li>
-                                <li>
-                                    <a class="text-center" href="#">
-                                        <strong>See All Tasks</strong>
-                                        <i class="fa fa-angle-right"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                            <!-- /.dropdown-tasks -->
-                        </li>
-                        <!-- /.dropdown -->
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
-                            </a>
-                            <ul class="dropdown-menu dropdown-alerts">
-                                <li>
-                                    <a href="#">
-                                        <div>
-                                            <i class="fa fa-comment fa-fw"></i> New Comment
-                                            <span class="pull-right text-muted small">4 minutes ago</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="divider"></li>
-                                <li>
-                                    <a href="#">
-                                        <div>
-                                            <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                                            <span class="pull-right text-muted small">12 minutes ago</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="divider"></li>
-                                <li>
-                                    <a href="#">
-                                        <div>
-                                            <i class="fa fa-envelope fa-fw"></i> Message Sent
-                                            <span class="pull-right text-muted small">4 minutes ago</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="divider"></li>
-                                <li>
-                                    <a href="#">
-                                        <div>
-                                            <i class="fa fa-tasks fa-fw"></i> New Task
-                                            <span class="pull-right text-muted small">4 minutes ago</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="divider"></li>
-                                <li>
-                                    <a href="#">
-                                        <div>
-                                            <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                                            <span class="pull-right text-muted small">4 minutes ago</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="divider"></li>
-                                <li>
-                                    <a class="text-center" href="#">
-                                        <strong>See All Alerts</strong>
-                                        <i class="fa fa-angle-right"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                            <!-- /.dropdown-alerts -->
-                        </li>
-                        <!-- /.dropdown -->
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                            </a>
-                            <ul class="dropdown-menu dropdown-user">
-                                <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                                    <ul>
-                                        <li>test</li>
+
+                <nav class="navbar navbar-dark bg-dark flex-md-nowrap p-0">
+                    <div class="container">
+                        <ul class="nav navbar-top-links ml-auto">
+
+                             
+
+                                      
+                            <li class="nav-item dropdown">
+
+                                            <a class="nav-link dropdown-toggle" 
+                                            href="#" id="navbarProfile" 
+                                                role="button" data-toggle="dropdown" 
+                                                aria-haspopup="true" 
+                                                aria-expanded="false">
+                                                        <i class="fa fa-user    "></i>
+                                                        Profile
+                                                </a>
+                                                <div class="dropdown-menu" 
+                                                aria-labelledby="navbarProfile">
+                                                        <a href="{{ route('user.profile') }}"><i class="fa fa-user fa-fw"></i> 
+                                                            Your Profile
+                                                        </a>
+
+                                                        <form action="{{ route('logout') }}" method="post">
+                                                                @csrf
+                                                                <button class="btn btn-link" type="submit"><i class="fa fa-sign-out fa-fw"></i> Logout</button>
+                        
+                                                            </form>
+                                                                    </div>
+                                              </li>
+
+                                              
                                     </ul>
-                                </li>
-                                <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                                </li>
-                                <li class="divider"></li>
-                                <li>
                                     
-                                <form action="{{ route('logout') }}" method="post">
-                                        @csrf
-                                        <button class="btn btn-link" type="submit"><i class="fa fa-sign-out fa-fw"></i> Logout</button>
-
-                                    </form>
-                                
+                                    <!-- /.dropdown-user -->
                                 </li>
+                                <!-- /.dropdown -->
                             </ul>
-                            
-                            <!-- /.dropdown-user -->
-                        </li>
-                        <!-- /.dropdown -->
-                    </ul>
-                    <!-- /.navbar-top-links -->
-        
-                    <div class="navbar-default sidebar" role="navigation">
-                        <div class="sidebar-nav navbar-collapse">
-                            <ul class="nav" id="side-menu">
-                                <li class="sidebar-search">
-                                    <div class="input-group custom-search-form">
-                                        <input type="text" class="form-control" placeholder="Search...">
-                                        <span class="input-group-btn">
-                                        <button class="btn btn-default" type="button">
-                                            <i class="fa fa-search"></i>
-                                        </button>
-                                    </span>
-                                    </div>
-                                    <!-- /input-group -->
-                                </li>
-                                <li>
-                                    <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                                </li>
+                
+                        </div>  
+                        <!-- /.navbar-top-links -->
+                              </nav>
 
+                @include('layouts.partials.backend.sidebar')
 
-                                {{-- Category Start --}}
-                            
-                                <li>
-                                        <a href="#">
-                                            <i class="fa fa-tags    "></i>
-                                            Categories<span class="fa arrow"></span></a>
-                                        <ul class="nav nav-second-level">
-                                            <li>
-                                            <a href="{{ route('categories.index') }}">All Categories</a>
-                                            </li>
-                                            <li>
-                                                <a href="{{ route('categories.create') }}">Add new category</a>
-                                            </li>
-                                        </ul>
-                                        <!-- /.nav-second-level -->
-                                    </li>
-                                
-                                    {{-- Category End --}}
+                    <div class="col-9 ml-auto">
+                            @yield('content')
 
-                                {{-- Tag Start --}}
-                            
-                                <li>
-                                        <a href="#">
-                                            <i class="fa fa-tags    "></i>
-                                            Tags<span class="fa arrow"></span></a>
-                                        <ul class="nav nav-second-level">
-                                            <li>
-                                                <a href="{{ route('tags.index') }}">All Tags</a>
-                                            </li>
-                                            <li>
-                                                <a href="{{ route('tags.create') }}">Add new tag</a>
-                                            </li>
-                                        </ul>
-                                        <!-- /.nav-second-level -->
-                                    </li>
-                                
-                                    {{-- Tag End --}}
-
-                                    
-                                {{-- Posts Start --}}
-                            
-                            <li>
-                                    <a href="#">
-                                        
-                                        <i class="fa fa-book" aria-hidden="true"></i>
-                                        Posts<span class="fa arrow"></span></a>
-                                    <ul class="nav nav-second-level">
-                                        <li>
-                                            <a href="{{ route('posts.index') }}">All Posts</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('posts.create') }}">Add new post</a>
-                                        </li>
-                                    </ul>
-                                    <!-- /.nav-second-level -->
-                                </li>
-                            
-                                {{-- Posts End --}}
-
-                            <li>
-                                    <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
-                                    <ul class="nav nav-second-level">
-                                        <li>
-                                            <a href="flot.html">Flot Charts</a>
-                                        </li>
-                                        <li>
-                                            <a href="morris.html">Morris.js Charts</a>
-                                        </li>
-                                    </ul>
-                                    <!-- /.nav-second-level -->
-                                </li>
-                                <li>
-                                    <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
-                                </li>
-                                <li>
-                                    <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
-                                    <ul class="nav nav-second-level">
-                                        <li>
-                                            <a href="panels-wells.html">Panels and Wells</a>
-                                        </li>
-                                        <li>
-                                            <a href="buttons.html">Buttons</a>
-                                        </li>
-                                        <li>
-                                            <a href="notifications.html">Notifications</a>
-                                        </li>
-                                        <li>
-                                            <a href="typography.html">Typography</a>
-                                        </li>
-                                        <li>
-                                            <a href="icons.html"> Icons</a>
-                                        </li>
-                                        <li>
-                                            <a href="grid.html">Grid</a>
-                                        </li>
-                                    </ul>
-                                    <!-- /.nav-second-level -->
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
-                                    <ul class="nav nav-second-level">
-                                        <li>
-                                            <a href="#">Second Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Second Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level <span class="fa arrow"></span></a>
-                                            <ul class="nav nav-third-level">
-                                                <li>
-                                                    <a href="#">Third Level Item</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Third Level Item</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Third Level Item</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Third Level Item</a>
-                                                </li>
-                                            </ul>
-                                            <!-- /.nav-third-level -->
-                                        </li>
-                                    </ul>
-                                    <!-- /.nav-second-level -->
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
-                                    <ul class="nav nav-second-level">
-                                        <li>
-                                            <a href="blank.html">Blank Page</a>
-                                        </li>
-                                        <li>
-                                            <a href="login.html">Login Page</a>
-                                        </li>
-                                    </ul>
-                                    <!-- /.nav-second-level -->
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- /.sidebar-collapse -->
                     </div>
-                    <!-- /.navbar-static-side -->
-                </nav>
-        
-        @yield('content')
-    </div>
+
+            </div>
     <!-- /#wrapper -->
 
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
+
+    <script src="{{ asset('backend/js/dashboard.js') }}"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="{{ asset('backend/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
-
+    
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="{{ asset('backend/vendor/metisMenu/metisMenu.min.js') }}"></script>
 
     <!-- Morris Charts JavaScript -->
-    <script src="{{ asset('backend/vendor/raphael/raphael.min.js') }}"></script>
-    <script src="{{ asset('backend/vendor/morrisjs/morris.min.js') }}"></script>
-    <script src="{{ asset('data/morris-data.js') }}"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="{{ asset('backend/js/sb-admin-2.js') }}"></script>
 
         
 </body>

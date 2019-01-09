@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'tetracms'),
 
     /*
     |--------------------------------------------------------------------------
@@ -119,7 +119,7 @@ return [
     |
     */
 
-    'key' => env('APP_KEY'),
+    'key' => env('APP_KEY','base64:gbuZTK35PKiZWFE8MuhsNj6VLUXODaK2evK1NKCS6Xg='),
 
     'cipher' => 'AES-256-CBC',
 

@@ -2,9 +2,17 @@
 
 namespace App\Providers;
 
+use App\Events\TagCreated;
+use App\Events\TagDeleted;
+use App\Events\TagUpdated;
+use App\Events\PostCreated;
+use App\Events\PostDeleted;
+use App\Events\PostUpdated;
 use App\Events\CategoryCreated;
 use App\Events\CategoryDeleted;
 use App\Events\CategoryUpdated;
+use App\Listeners\TagCacheListener;
+use App\Listeners\PostCacheListener;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
 use App\Listeners\CategoryCacheListener;
@@ -31,14 +39,23 @@ class EventServiceProvider extends ServiceProvider
         CategoryDeleted::class => [
             CategoryCacheListener::class
         ],
-        TagDeleted::class => [
+        TagCreated::class => [
+            TagCacheListener::class
+        ],
+        TagUpdated::class => [
             TagCacheListener::class
         ],
         TagDeleted::class => [
             TagCacheListener::class
         ],
-        TagDeleted::class => [
-            TagCacheListener::class
+        PostCreated::class => [
+            PostCacheListener::class
+        ],
+        PostUpdated::class => [
+            PostCacheListener::class
+        ],
+        PostDeleted::class => [
+            PostCacheListener::class
         ],
     ];
 

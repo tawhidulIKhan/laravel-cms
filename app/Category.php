@@ -15,7 +15,7 @@ class Category extends Model
     // Relationship
 
     public function posts(){
-        return $this->hasMany(Post::class);
+        return $this->belongsToMany(Post::class);
     }
 
     /**
@@ -34,4 +34,6 @@ class Category extends Model
     public function getRouteKeyName(){
         return 'slug';
     }
+
+
 }

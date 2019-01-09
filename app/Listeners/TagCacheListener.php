@@ -2,6 +2,8 @@
 
 namespace App\Listeners;
 
+use App\Tag;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
@@ -25,8 +27,8 @@ class TagCacheListener
      */
     public function handle($event)
     {
-        Cache::forget('tags');
-        $tags = Tag::paginate(10);
-        Cahce::forever('$tags',$tags);
+        cache()->forget('tags');
+        $tags = Tag::orderBy('created_at','desc')->paginate(10);
+        cache()->forever('tags',$tags);
     }
 }

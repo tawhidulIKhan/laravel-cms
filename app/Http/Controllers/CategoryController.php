@@ -19,74 +19,11 @@ class CategoryController extends Controller
     {  
 
         $data['categories'] = Cache::get('categories', function(){
-            return Category::paginate(10);
+            return Category::orderBy('created_at','desc')->paginate(10);
         });
 
         return view('backend/categories',$data);
     }
-    
-    // Category live search 
-
-    public function categorySearch(Request $request){
-        
-        $output = "";
-
-        if($request->ajax()){
-            $categories = Category::where('name','LIKE','%'.$request->search.'%')->get();
-            
-            if($categories->count() > 0){
-                foreach($categories as $category){
-                    $output .='<tr class="gradeA odd" role="row">';
-                    
-                    $output .= sprintf('<td class="sorting_1">%s</td>',$category->id);
-                    $output .= sprintf('<td class="sorting_1">%s</td>',$category->name);
-                    $output .= sprintf('<td class="sorting_1">%s</td>',$category->description);
-                    $output .= sprintf('<td class="sorting_1"><img src="%s" width="100" height="100"></td>', asset("storage/images/".$category->thumbnail));
-                    $output .= sprintf('<td class="sorting_1"><a href="%s" class="btn btn-primary">Details</a></td>', route('categories.show',$category->slug));
-                    $output .='</tr>';
-                }
-
-           
-            }
-
-        }
-
-        return \response($output);
-         
-    }
-
-
-    // Category Limit 
-
-        // Category live search 
-
-        public function categoryLimit(Request $request){
-        
-            $output = "";
-    
-            if($request->ajax()){
-                $categories = Category::take($request->limit)->get();
-                
-                if($categories->count() > 0){
-                    foreach($categories as $category){
-                        $output .='<tr class="gradeA odd" role="row">';
-                        
-                        $output .= sprintf('<td class="sorting_1">%s</td>',$category->id);
-                        $output .= sprintf('<td class="sorting_1">%s</td>',$category->name);
-                        $output .= sprintf('<td class="sorting_1">%s</td>',$category->description);
-                        $output .= sprintf('<td class="sorting_1"><img src="%s" width="100" height="100"></td>', asset("storage/images/".$category->thumbnail));
-                        $output .= sprintf('<td class="sorting_1"><a href="%s" class="btn btn-primary">Details</a></td>', route('categories.show',$category->slug));
-                        $output .='</tr>';
-                    }
-    
-               
-                }
-    
-            }
-    
-            return \response($output);
-             
-        }
     
 
         
@@ -111,7 +48,6 @@ class CategoryController extends Controller
     {
         $validator = Validator::make($request->all(),[
             'name' => 'required',
-            'description' => 'string',
             'thumbnail' => 'image'
         ]);
 
@@ -167,6 +103,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
+        
         $data['category'] = $category;
 
         return view('backend/category',$data);

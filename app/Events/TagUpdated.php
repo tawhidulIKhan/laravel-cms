@@ -31,6 +31,7 @@ class TagUpdated
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('channel-name');
+        return [];
+
     }
 }

@@ -11,10 +11,10 @@
 
             {{ cms_notification($errors) }}
 
-            <h4 class="mt-3">login</h4>
+            <h4 class="mb-5 mt-5 font-weight-bold">Login</h4>
 
 
-            <form action="{{ route('login') }}" method="post" class="shadow p-4 bg-white my-5">
+            <form action="{{ route('login') }}" method="post" class="shadow p-5 bg-white my-5">
 
             @csrf
 
@@ -38,7 +38,7 @@
                 </label>
               </div>
 
-              <button type="submit" class="btn btn-primary">Login</button>
+              <button type="submit" class="btn btn-primary text-white text-uppercase">Login</button>
 
             <a href="{{ route('passwordResetToken') }}" class="ml-2">forgot your password?</a>
             </form>

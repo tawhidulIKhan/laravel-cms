@@ -14,9 +14,20 @@
 // Frontend Routes 
 
 Route::get('/','FrontendController@index')->name('home');
-Route::get('/post/{token}','FrontendController@single')->name('post');
+Route::get('/post/{slug}','FrontendController@postSingle')->name('post.single');
 Route::get('/page/{token}','FrontendController@page')->name('page');
 
+// Category Posts
+Route::get('/category/{slug}','FrontendController@categoryPosts')->name('posts.category');
+
+
+// Search Route
+
+Route::post('/search','FrontendController@search')->name('search');
+
+Route::resource('post/{slug}/reply','ReplyController');
+Route::post('post/{slug}/comment','ReplyController@store')->name('comment.store');
+Route::post('post/{slug}/reply/{reply}','ReplyController@replyStore')->name('reply.store');
 // Authenticate Route
 
 Route::get('/register','AuthController@resgisterShow')->name('register');
@@ -45,16 +56,18 @@ Route::group(['prefix'=>'/admin/','middleware'=>'auth'],function(){
 
     // Post
     Route::resource('/posts','PostController');
+    Route::post('/posts/postSearch','PostController@postSearch')->name('posts.postSearch');
+    Route::post('/posts/limit','PostController@postLimit')->name('posts.postLimit');
 
     // Post
     Route::resource('/categories','CategoryController');
-    // Category Search
 
-    Route::post('/categories/categorySearch','CategoryController@categorySearch')->name('categories.categorySearch');
-    Route::post('/categories/limit','CategoryController@categoryLimit')->name('categories.categoryLimit');
+    
     // Tags
     Route::resource('/tags','TagController');
-    Route::post('/tags/tagSearch','TagController@tagSearch')->name('tags.tagSearch');
-    Route::post('/tags/limit','TagController@tagLimit')->name('tags.tagLimit');
+    Route::get('/profile','DashboardController@user_profile')->name('user.profile');
+    Route::get('/profile/edit','DashboardController@user_edit')->name('user.profile.edit');
+    Route::delete('/profile/delete/{id}','DashboardController@user_destroy')->name('user.profile.delete');
+    Route::put('/profile/edit/{id}','DashboardController@user_update')->name('user.profile.update');
 
 });

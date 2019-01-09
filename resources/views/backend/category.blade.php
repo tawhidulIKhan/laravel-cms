@@ -1,19 +1,15 @@
 @extends('layouts.backend')
 
 @section('content')
-<div id="page-wrapper">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Category</h1>
-            </div>
-            <!-- /.col-lg-12 -->
-        </div>
-        <!-- /.row -->
-        <div class="row">
-            <div class="col-md-4">
-            <img src="{{ asset('storage/images/'.$category->thumbnail) }}" width="100%">
-            </div>
-            <div class="col-md-8">
+<div class="wrapper my-4">
+
+        <h4 class="mb-4">Category</h4>
+
+
+<div class="card">
+    <img src="{{ asset('storage/images/'.$category->thumbnail) }}" class="card-img-top">
+
+    <div class="card-body">
             <h3>{{ $category->name }}</h3>
             <p>{{ $category->description }}</p>
             <a href="{{ route('categories.edit',$category->slug) }}" class="btn btn-success">Edit</a>
@@ -24,9 +20,9 @@
                     @method('DELETE')
                 </form>
      
-        </div>
-        </div>
-
     </div>
+</div>
+            </div>
+
     
     @endsection

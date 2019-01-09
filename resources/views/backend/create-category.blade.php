@@ -3,21 +3,11 @@
 @section('content')
     
      
-<div id="page-wrapper">
+<div class="wrapper my-4">
+            
 
+        <h4 class="mb-4">Add New Category</h4>
 
-
-  <div class="row">
-      <div class="col-lg-12">
-          <h1 class="page-header">Add new category</h1>
-      </div>
-      <!-- /.col-lg-12 -->
-  </div>
-  
-  <div class="panel panel-default">
-    <div class="panel-body">
-        <div class="row">
-            <div class="col-lg-12">
                 {{ cms_notification($errors) }}
 
                 <form role="form" method="POST" action="{{ route('categories.store') }}"
@@ -36,19 +26,9 @@
                         <input type="file" name="thumbnail">
                     </div>
     
-                    <button type="submit" class="btn btn-primary">Add Category</button>
+                    <button type="submit" class="btn btn-primary text-white">Add Category</button>
                 </form>
     
-
-            </div>
-            <!-- /.col-lg-6 (nested) -->
-        </div>
-        <!-- /.row (nested) -->
-    </div>
-    <!-- /.panel-body -->
-</div>
-
-
 </div>
         <!-- /#page-wrapper -->
         @endsection

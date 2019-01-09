@@ -17,8 +17,9 @@ class TagController extends Controller
      */
     public function index()
     {   
+        
         $data['tags'] = Cache::get('tags',function(){
-            return Tag::paginate(10);
+            return Tag::orderBy('created_at','desc')->paginate(10);
         });
 
         return view('backend/tags',$data);
@@ -76,69 +77,7 @@ class TagController extends Controller
         return redirect()->route('tags.create');
 
     }
-        // Tag live search 
-
-        public function tagSearch(Request $request){
-        
-            $output = "";
     
-            if($request->ajax()){
-                $tags = Tag::where('name','LIKE','%'.$request->search.'%')->get();
-                
-                if($tags->count() > 0){
-                    foreach($tags as $tag){
-                        $output .='<tr class="gradeA odd" role="row">';
-                        
-                        $output .= sprintf('<td class="sorting_1">%s</td>',$tag->id);
-                        $output .= sprintf('<td class="sorting_1">%s</td>',$tag->name);
-                        $output .= sprintf('<td class="sorting_1"><a href="%s" class="btn btn-primary">Details</a></td>', route('tags.show',$tag->slug));
-                        $output .='</tr>';
-                    }
-    
-               
-                }
-    
-            }
-    
-            return \response($output);
-             
-        }
-    
-    
-        // Tag Limit 
-    
-            // Tag live search 
-    
-            public function tagLimit(Request $request){
-            
-                $output = "";
-        
-                if($request->ajax()){
-                    $tags = Tag::take($request->limit)->get();
-                    
-                    if($tags->count() > 0){
-                        foreach($tags as $tag){
-                            $output .='<tr class="gradeA odd" role="row">';
-                            
-                            $output .= sprintf('<td class="sorting_1">%s</td>',$tag->id);
-                            $output .= sprintf('<td class="sorting_1">%s</td>',$tag->name);
-                            $output .= sprintf('<td class="sorting_1"><a href="%s" class="btn btn-primary">Details</a></td>', route('categories.show',$tag->slug));
-                            $output .='</tr>';
-                        }
-        
-                   
-                    }
-        
-                }
-        
-                return \response($output);
-                 
-            }
-        
-    
-     
-            
-
 
     /**
      * Display the specified resource.

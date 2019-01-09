@@ -26,7 +26,7 @@
               </div>
 
 
-              <button type="submit" class="btn btn-primary">Send</button>
+              <button type="submit" class="btn btn-primary text-white text-uppercase">Send</button>
        
             </form>
           </div>

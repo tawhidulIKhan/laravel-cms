@@ -14,23 +14,31 @@ use App\Notifications\PasswordResetNotify;
 
 class AuthController extends Controller
 {
+
+
     // Show register page
 
     public function resgisterShow(){
+
+        if(auth()->user()){
+        
+            return redirect()->route('dashboard');
+        }
+     
         return view('frontend/register');
     }
 
     // Register Store
 
     public function resgisterStore(Request $request){
-        
+     
+
+        $role = null;
+
         $validator = Validator::make($request->all(),[
-            'username' => 'required|min:4',
-            'firstname' => 'required|string',
-            'lastname' => 'required|string',
             'email' => 'required|email',
+            'username' => 'required',
             'password' => 'required|min:6|confirmed',
-            'thumbnail' => 'image'
         ]);
 
         if($validator->fails()){
@@ -38,29 +46,21 @@ class AuthController extends Controller
             return redirect()->back()->withErrors($validator);
         }
 
-        if($request->hasFile('thumbnail')){
-
-            $imgName = sprintf('%s.%s',str_random(10),$request->thumbnail->extension());
-            
-            $request->thumbnail->storeAs('images',$imgName);
-        }else{
-
-            $imgName = 'default.jpg';
-
-        }
 
         $token = str_random(10);
 
         $user = User::create([
             'username' => $request->username,
-            'firstname' => $request->firstname,
-            'lastname' => $request->lastname,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'email_verification_token' => $token,
-            'thumbnail' => $imgName,
-            'role' => 'subscriber'
         ]);
+
+        if(isset($role)){
+
+            $user->roles()->attach($role);
+
+        }
 
         $user->notify(new VerifyMail($user));
         
@@ -111,7 +111,11 @@ class AuthController extends Controller
         // Email Verification Again
 
         public function verifyAgain(){
+            if(auth()->user()){
         
+                return redirect()->route('dashboard');
+            }
+            
             return view('frontend/mail-verify-again');
             
         }
@@ -153,6 +157,11 @@ class AuthController extends Controller
         // Show login page
     
         public function loginShow(){
+            if(auth()->user()){
+        
+                return redirect()->route('dashboard');
+            }
+    
             return view('frontend/login');
         }
     

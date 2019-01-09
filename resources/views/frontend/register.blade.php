@@ -8,7 +8,7 @@
 
       <div class="row">
           <div class="col-8 m-auto">
-            <h4 class="mt-3">Register</h4>
+            <h4 class="mb-5 mt-5 font-weight-bold">Register</h4>
 
             @if($errors->any())
             <div class="alert alert-danger">
@@ -18,26 +18,15 @@
             </div>
             @endif
 
-            <form action="{{ route('register') }}" method="post" enctype="multipart/form-data" class="shadow p-4 bg-white my-5">
+            <form action="{{ route('register') }}" method="post" enctype="multipart/form-data" class="shadow p-5 bg-white mb-5">
 
             @csrf
 
-              <div class="form-group">
+
+            <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" name="username" id="username" class="form-control" 
-                placeholder="Type Username" aria-describedby="helpId">
-              </div>
-
-              <div class="form-group">
-                <label for="firstname">First Name</label>
-                <input type="text" name="firstname" id="firstname" class="form-control" 
-                placeholder="Type First Name" aria-describedby="helpId">
-              </div>
-
-              <div class="form-group">
-                <label for="lastname">Last Name</label>
-                <input type="text" name="lastname" id="lastname" class="form-control" 
-                placeholder="Type Last Name" aria-describedby="helpId">
+                placeholder="Type username">
               </div>
 
 
@@ -45,12 +34,6 @@
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email" class="form-control" 
                 placeholder="Type Email" aria-describedby="helpId">
-              </div>
-
-              <div class="form-group">
-                <label for="thumbnail">Profile Photo</label>
-                <input type="file" name="thumbnail" id="thumbnail" class="form-control" 
-                aria-describedby="helpId">
               </div>
 
 
@@ -66,7 +49,7 @@
                 aria-describedby="helpId" placeholder="Enter Confirm Password">
               </div>
 
-              <button type="submit" class="btn btn-primary">Register</button>
+              <button type="submit" class="btn btn-primary text-white text-uppercase">Register</button>
 
             </form>
           </div>
