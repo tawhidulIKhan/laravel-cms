@@ -2,6 +2,7 @@
 
 return [
 
+
     /*
     |--------------------------------------------------------------------------
     | Mail Driver
@@ -29,7 +30,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('MAIL_HOST', 'smtp.mailtrap.io'),
 
     /*
     |--------------------------------------------------------------------------
@@ -42,7 +43,7 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT', 587),
+    'port' => env('MAIL_PORT', 2525),
 
     /*
     |--------------------------------------------------------------------------
@@ -84,9 +85,9 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME'),
+    'username' => env('MAIL_USERNAME','eac1cd6a5425c6'),
 
-    'password' => env('MAIL_PASSWORD'),
+    'password' => env('MAIL_PASSWORD','c21a549c6c0179'),
 
     /*
     |--------------------------------------------------------------------------
