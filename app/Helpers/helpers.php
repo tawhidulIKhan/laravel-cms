@@ -22,7 +22,12 @@ function cms_notification($errors){
 // Image Link
 
 function cms_thumbnail($name){
-    if($name === null){
+
+    $link = substr($name,0,7);
+
+    if($link === "https:/" || $link === "http://" ){
+        return $name;
+    }elseif($name === null){
         return asset('storage/images/default.jpg');
 
     }
