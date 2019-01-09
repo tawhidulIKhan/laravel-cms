@@ -14,7 +14,7 @@ $factory->define(Post::class, function (Faker $faker) {
         'slug' => str_slug($title),
         'content' => $content,
         'short_content' => $short_content,
-        'thumbnail' => $faker->image('public/storage/images',500,400,null,false),
+        'thumbnail' => $faker->imageUrl(800,300),
         'user_id' => User::all()->random(),
         'status' => 'publish',
         'type' => 'normal'
