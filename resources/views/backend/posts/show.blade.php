@@ -2,6 +2,7 @@
 @section('content')
 <div class="wrapper my-4">
    <h4 class="mb-4">Post Details</h4>
+    {{ cms_notification($errors) }}
    <div class="row bg-white shadow-sm p-4">
       <div class="col-md-4 col-lg-4 col-sm-12 col-12">
          <img src="{{ cms_thumbnail($post->thumbnail) }}" class="card-img-top">

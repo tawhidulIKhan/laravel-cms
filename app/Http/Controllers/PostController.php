@@ -138,25 +138,10 @@ class PostController extends Controller
             return redirect()->back()->withErrors($validator);
         }
 
-        if($request->hasFile('thumbnail')){
-
-            $imgValidator = Validator::make($request->all(),[
-                'thumbnail' => 'image',
-            ]);
-
-            if($imgValidator->fails()){
-
-                return redirect()->back()->withErrors($imgValidator);
-            }
-
-            
-            $imgName = sprintf('%s.%s',str_random(10),$request->thumbnail->extension());
-            
-            $request->thumbnail->storeAs('images',$imgName);
-        }
+        $imgName = cms_image_process($request,"thumbnail");
 
 
-        if($request->hasFile('thumbnail')){
+        if($request->hasFile('thumbnail') || $request->thumbnail_url){
 
             $post->update([
                 'title' => $request->title,
