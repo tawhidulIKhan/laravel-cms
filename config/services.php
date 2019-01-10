@@ -15,7 +15,7 @@ return [
     */
 
     'mailgun' => [
-        'domain' => env('MAILGUN_DOMAIN','http://quiet-everglades-62462.herokuapp.com/'),
+        'domain' => env('MAILGUN_DOMAIN','sandboxcd62a979468548578edde4793d19cd7d.mailgun.org'),
         'secret' => env('MAILGUN_SECRET','02dd42365faa2ebcf37d247e3d49af39-060550c6-d4914222'),
         'endpoint' => env('MAILGUN_ENDPOINT', 'api.mailgun.net'),
     ],
