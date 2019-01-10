@@ -22,7 +22,7 @@ class CategoryController extends Controller
             return Category::orderBy('created_at','desc')->paginate(10);
         });
 
-        return view('backend/categories',$data);
+        return view('backend.categories.index',$data);
     }
     
 
@@ -34,7 +34,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('backend/create-category');    
+        return view('backend.categories.create');    
     
     }
 
@@ -106,7 +106,7 @@ class CategoryController extends Controller
         
         $data['category'] = $category;
 
-        return view('backend/category',$data);
+        return view('backend.categories.show',$data);
 
     }
 
@@ -120,7 +120,7 @@ class CategoryController extends Controller
     {   
         $data['category'] = $category;
 
-        return view('backend/edit-category',$data);
+        return view('backend.categories.edit',$data);
 
     }
 

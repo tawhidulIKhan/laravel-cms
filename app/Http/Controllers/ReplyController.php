@@ -85,6 +85,7 @@ class ReplyController extends Controller
     public function replyStore(Request $request,$slug,$id)
     {
 
+
         if(auth()->user() == null){
             Session::flash('type','danger');
             Session::flash('message','You are not registered user ..');

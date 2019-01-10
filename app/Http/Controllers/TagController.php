@@ -22,7 +22,7 @@ class TagController extends Controller
             return Tag::orderBy('created_at','desc')->paginate(10);
         });
 
-        return view('backend/tags',$data);
+        return view('backend.tags.index',$data);
     }
 
     /**
@@ -32,7 +32,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        return view('backend/create-tag');    
+        return view('backend.tags.create');    
 
     }
 
@@ -89,7 +89,7 @@ class TagController extends Controller
     {   
         $data['tag'] = $tag;
 
-        return view('backend/tag',$data);
+        return view('backend.tags.show',$data);
 
     }
 
@@ -103,7 +103,7 @@ class TagController extends Controller
     {
         $data["tag"] = $tag;
 
-        return view('backend/edit-tag',$data);
+        return view('backend.tags.edit',$data);
 
     }
 

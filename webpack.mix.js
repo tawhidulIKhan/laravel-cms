@@ -11,7 +11,8 @@ const mix = require("laravel-mix");
  |
  */
 
-mix.js("resources/js/dashboard.js", "public/backend/js");
+mix.js("resources/js/dashboard-init.js", "public/backend/js");
+mix.js("resources/js/dashboard-script.js", "public/backend/js");
 mix.js("resources/js/app.js", "public/frontend/js");
 mix.sass("resources/sass/app.scss", "public/frontend/css");
 

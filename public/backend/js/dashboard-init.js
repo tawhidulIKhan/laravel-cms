@@ -86,14 +86,19 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/dashboard.js":
-/*!***********************************!*\
-  !*** ./resources/js/dashboard.js ***!
-  \***********************************/
+/***/ "./resources/js/dashboard-init.js":
+/*!****************************************!*\
+  !*** ./resources/js/dashboard-init.js ***!
+  \****************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open '/home/www/laravel/cms/resources/js/dashboard.js'");
+$(document).ready(function () {
+  $("textarea").summernote({
+    minHeight: 400 // set minimum height of editor
+
+  });
+});
 
 /***/ }),
 
@@ -120,13 +125,13 @@ throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index
 /***/ }),
 
 /***/ 0:
-/*!*****************************************************************************************************!*\
-  !*** multi ./resources/js/dashboard.js ./resources/sass/app.scss ./resources/sass/backend-app.scss ***!
-  \*****************************************************************************************************/
+/*!**********************************************************************************************************!*\
+  !*** multi ./resources/js/dashboard-init.js ./resources/sass/app.scss ./resources/sass/backend-app.scss ***!
+  \**********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/www/laravel/cms/resources/js/dashboard.js */"./resources/js/dashboard.js");
+__webpack_require__(/*! /home/www/laravel/cms/resources/js/dashboard-init.js */"./resources/js/dashboard-init.js");
 __webpack_require__(/*! /home/www/laravel/cms/resources/sass/app.scss */"./resources/sass/app.scss");
 module.exports = __webpack_require__(/*! /home/www/laravel/cms/resources/sass/backend-app.scss */"./resources/sass/backend-app.scss");
 

@@ -81,54 +81,51 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/dashboard.js":
-/*!***********************************!*\
-  !*** ./resources/js/dashboard.js ***!
-  \***********************************/
+/***/ "./resources/js/dashboard-script.js":
+/*!******************************************!*\
+  !*** ./resources/js/dashboard-script.js ***!
+  \******************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open '/home/www/laravel/cms/resources/js/dashboard.js'");
+// Thumbnail Functionality
+var thumbUrl = document.querySelector("#thumbnail_url");
+var thumb = document.querySelector("#thumbnail");
+var form = document.querySelector("form");
+
+if (thumbUrl) {
+  if (thumbUrl.value) {
+    thumb.setAttribute("disabled", true);
+  }
+
+  thumbUrl.addEventListener("focus", function () {
+    thumb.setAttribute("disabled", true);
+  });
+}
+
+if (thumbUrl) {
+  thumbUrl.addEventListener("blur", function () {
+    if (this.value == "") {
+      thumb.disabled = false;
+    }
+  }, true);
+}
 
 /***/ }),
 
-/***/ "./resources/sass/app.scss":
-/*!*********************************!*\
-  !*** ./resources/sass/app.scss ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ "./resources/sass/backend-app.scss":
-/*!*****************************************!*\
-  !*** ./resources/sass/backend-app.scss ***!
-  \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 0:
-/*!*****************************************************************************************************!*\
-  !*** multi ./resources/js/dashboard.js ./resources/sass/app.scss ./resources/sass/backend-app.scss ***!
-  \*****************************************************************************************************/
+/***/ 1:
+/*!************************************************!*\
+  !*** multi ./resources/js/dashboard-script.js ***!
+  \************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/www/laravel/cms/resources/js/dashboard.js */"./resources/js/dashboard.js");
-__webpack_require__(/*! /home/www/laravel/cms/resources/sass/app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! /home/www/laravel/cms/resources/sass/backend-app.scss */"./resources/sass/backend-app.scss");
+module.exports = __webpack_require__(/*! /home/www/laravel/cms/resources/js/dashboard-script.js */"./resources/js/dashboard-script.js");
 
 
 /***/ })

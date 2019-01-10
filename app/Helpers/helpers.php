@@ -37,6 +37,7 @@ function cms_thumbnail($name){
 
 function cms_image_process($request,$name){
 
+    
     if($request->hasFile($name)){
 
         $validator = validator()->make($request->all(),[
@@ -56,10 +57,45 @@ function cms_image_process($request,$name){
 
     }else{
 
-        $imgName = 'default.jpg';
+        $thumbUrl = sprintf("%s_url",$name);
+           
+            if($request->$thumbUrl){
+
+                //    Thumbnail URl Process Start
+
+                $validator = validator()->make($request->all(),[
+                    $thumbUrl  => 'active_url',
+               ]);
+        
+                if($validator->fails()){
+        
+                    return redirect()->back()->withErrors($validator);
+                }
+
+                
+                $imgName =  $request->$thumbUrl;
+
+                //    Thumbnail URl Process End
+     
+            }else{
+
+                $imgName = 'default.jpg';
+
+            }
+    
+
 
     }
 
     return $imgName;
 
+}
+
+
+
+// Check Selected 
+
+function cms_selected($post,$item){
+
+    return ($post->categories && in_array($item->id,$post->categories->pluck('id')->toArray())) ? 'selected' : '';
 }
