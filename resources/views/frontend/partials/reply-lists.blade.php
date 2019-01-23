@@ -7,7 +7,7 @@
         <div class="media-body">
           <h5>{{ $comment->user->username }}</h5>
         <div class="comment-meta my-2">
-          {{ $comment->user->created_at->diffForHumans() }}
+          {{ $comment->created_at->diffForHumans() }}
         </div>
         <p>
             {{ $comment->content }}

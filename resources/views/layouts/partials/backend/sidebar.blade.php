@@ -1,32 +1,133 @@
-<div class="sidebar-sticky bg-dark">
-
-    <div class="info text-center">
+<div class="dashboard-sidebar active md-xs-hidden bg-secondary">
+<div class="info d-flex px-3 align-items-center">
         <figure class="rounded-circle">
-                <img width="100" height="100" src="{{ cms_thumbnail(auth()->user()->thumbnail) }}" class="img-fluid rounded-circle" alt="">
+                <img src="{{ cms_thumbnail(auth()->user()->thumbnail) }}" class="img-fluid rounded-circle" alt="">
 
         </figure>
-    <h5 class="my-4">{{ auth()->user()->username }}</h5>
+        <div class="pl-3">
+
+                <h5>
+                        Hello
+                </h5>
+
+                <h6>
+                        {{ auth()->user()->username }}
+                </h6>
+        </div>
+ 
 </div>
 
+<div class="sep my-2"></div>
     <ul class="nav flex-column">
           <li class="nav-item">
           <a class="nav-link active" href="{{ route('dashboard') }}">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-              Dashboard
+
+<i class="fa fa-home mr-3" aria-hidden="true"></i>
+            Dashboard
             </a>
           
   
 
 
         </li>
+        {{-- Category --}}
+        @if (auth()->user()->hasPermission('create_permissions'))
+
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarCategory" 
+            role="button" data-toggle="dropdown" aria-haspopup="true" 
+            aria-expanded="false">
+                    <i class="fa fa-tags    "></i>
+                    Permissions
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarCategory">
+                    <a class="dropdown-item" href="{{ route('permissions.index') }}">All Permissions</a>
+                    <a class="dropdown-item" href="{{ route('permissions.create') }}">Add new permission</a>
+                </div>
+          </li>
+
+          @endif
+
+          @if (auth()->user()->hasPermission('create_roles'))
+
     
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarCategory" 
+            role="button" data-toggle="dropdown" aria-haspopup="true" 
+            aria-expanded="false">
+            <i class="fa fa-user" aria-hidden="true"></i>
+                    Roles
+            </a>
+
+            <div class="dropdown-menu" aria-labelledby="navbarCategory">
+                    <a class="dropdown-item" href="{{ route('roles.index') }}">All Roles</a>
+                    <a class="dropdown-item" href="{{ route('roles.create') }}">Add new role</a>
+                </div>
+          </li>
+
+@endif
+
+
+@if (auth()->user()->hasPermission('create_settings'))
+
+    
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#" id="navbarCategory" 
+  role="button" data-toggle="dropdown" aria-haspopup="true" 
+  aria-expanded="false">
+
+  <i class="fas fa-tools"></i>
+          Settings
+  </a>
+  <div class="dropdown-menu" aria-labelledby="navbarCategory">
+          <a class="dropdown-item" href="{{ route('settings.index') }}">All Settings</a>
+          <a class="dropdown-item" href="{{ route('settings.create') }}">Add new setting</a>
+      </div>
+</li>
+
+@endif
+
+
+          {{-- <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarMenu" 
+                role="button" data-toggle="dropdown" aria-haspopup="true" 
+                aria-expanded="false">
+                        <i class="fa fa-tags    "></i>
+                        Menus
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarCategory">
+                        <a class="dropdown-item" href="{{ route('menus.index') }}">All Menus</a>
+                        <a class="dropdown-item" href="{{ route('menus.create') }}">Add new menu</a>
+                    </div>
+              </li>
+    
+
+              <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarMenuItem" 
+                    role="button" data-toggle="dropdown" aria-haspopup="true" 
+                    aria-expanded="false">
+                            <i class="fa fa-tags    "></i>
+                            Menu Items
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarCategory">
+                            <a class="dropdown-item" href="{{ route('menus.index') }}">All Menu</a>
+                            <a class="dropdown-item" href="{{ route('menus.create') }}">Add new menu</a>
+                        </div>
+                  </li> --}}
+        
+    
+
+                  
         {{-- Category --}}
     
+        @if (auth()->user()->hasPermission('create_categories'))
+            
         <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarCategory" 
                 role="button" data-toggle="dropdown" aria-haspopup="true" 
                 aria-expanded="false">
-                        <i class="fa fa-tags    "></i>
+
+                        <i class="fa fa-tag" aria-hidden="true"></i>
                         Categories
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarCategory">
@@ -34,9 +135,30 @@
                         <a class="dropdown-item" href="{{ route('categories.create') }}">Add new category</a>
                     </div>
               </li>
+              @endif
 
- 
+              @if (auth()->user()->hasPermission('create_users'))
+            
+              <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarCategory" 
+                      role="button" data-toggle="dropdown" aria-haspopup="true" 
+                      aria-expanded="false">
+      
+                              <i class="fa fa-users" aria-hidden="true"></i>
+                              Users
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarCategory">
+                              <a class="dropdown-item" href="{{ route('users.index') }}">All Users</a>
+                              <a class="dropdown-item" href="{{ route('users.create') }}">Add new user</a>
+                          </div>
+                    </li>
+                    @endif
+      
+       
+
+                    
               {{-- Tag --}}
+              @if (auth()->user()->hasPermission('create_tags'))
             
             <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarTag" 
@@ -54,9 +176,10 @@
                         </div>
                   </li>
 
-
+@endif
             {{-- Post --}}
-            
+            @if (auth()->user()->hasPermission('create_posts'))
+      
             <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarPost" 
                     role="button" data-toggle="dropdown" aria-haspopup="true" 
@@ -73,6 +196,7 @@
                         </div>
                   </li>
 
+                  @endif
 
                 
 

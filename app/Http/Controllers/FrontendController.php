@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Tag;
 use App\Post;
+use App\User;
 use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -16,7 +18,7 @@ class FrontendController extends Controller
         // $data["posts"] = cache("posts",function(){
         //     return Post::paginate(10);
         // });
-        
+
         $data["posts"] = Post::orderBy('created_at','desc')->paginate(10);
 
 
@@ -25,6 +27,16 @@ class FrontendController extends Controller
 
         return view('frontend/home',$data);
     }
+
+    public function postAuthor($author)
+    {   
+        $user = User::where('username',$author)->first();
+        $data["user"] = $user;
+        $data["posts"] = $user->posts()->paginate(10);
+        return view('frontend/author',$data);
+    }
+
+
 
     // showing single post
 
@@ -54,6 +66,19 @@ class FrontendController extends Controller
 
     }
 
+        // Tag Posts
+
+        public function tagPosts($slug){
+        
+            $tag =  Tag::where('slug',$slug)->first();
+          $data['name'] =  $tag->name;
+            $data['posts'] =  $tag->posts()->paginate(10);
+          
+            return view('frontend/tag-posts',$data);
+    
+        }
+
+        
     // showing page
 
     public function page($token){

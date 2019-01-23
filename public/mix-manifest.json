@@ -1,11 +1,5 @@
 {
-    "/backend/js/dashboard-init.js": "/backend/js/dashboard-init.js",
-    "/frontend/css/app.css": "/frontend/css/app.css",
-    "/backend/css/backend-app.css": "/backend/css/backend-app.css",
-    "/backend/js/dashboard-script.js": "/backend/js/dashboard-script.js",
-    "/frontend/js/app.js": "/frontend/js/app.js",
-    "/backend/css/tail.select-default.css": "/backend/css/tail.select-default.css",
-    "/backend/js/tail.select.min.js": "/backend/js/tail.select.min.js",
-    "/backend/css/quill.snow.css": "/backend/css/quill.snow.css",
-    "/backend/js/quill.min.js": "/backend/js/quill.min.js"
+    "/js/app.js": "/js/app.js",
+    "/js/dashboard-init.js": "/js/dashboard-init.js",
+    "/css/app.css": "/css/app.css"
 }

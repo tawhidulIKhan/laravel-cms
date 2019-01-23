@@ -11,18 +11,15 @@ const mix = require("laravel-mix");
  |
  */
 
-mix.js("resources/js/dashboard-init.js", "public/backend/js");
-mix.js("resources/js/dashboard-script.js", "public/backend/js");
-mix.js("resources/js/app.js", "public/frontend/js");
-mix.sass("resources/sass/app.scss", "public/frontend/css");
+mix.js("resources/js/dashboard-init.js", "public/js");
+mix.js("resources/js/app.js", "public/js");
+mix.sass("resources/sass/app.scss", "public/css");
 
-mix.sass("resources/sass/backend-app.scss", "public/backend/css");
+// mix.copy(
+//     "node_modules/tail.select/css/tail.select-default.css",
+//     "public/backend/css/"
+// );
+// mix.copy("node_modules/tail.select/js/tail.select.min.js", "public/backend/js");
 
-mix.copy(
-    "node_modules/tail.select/css/tail.select-default.css",
-    "public/backend/css/"
-);
-mix.copy("node_modules/tail.select/js/tail.select.min.js", "public/backend/js");
-
-mix.copy("node_modules/quill/dist/quill.snow.css", "public/backend/css/");
-mix.copy("node_modules/quill/dist/quill.min.js", "public/backend/js");
+// mix.copy("node_modules/quill/dist/quill.snow.css", "public/backend/css/");
+// mix.copy("node_modules/quill/dist/quill.min.js", "public/backend/js");

@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Blog Home - Start Bootstrap Template</title>
+    <title>Tetra CMS</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('frontend/css/app.css')}}" rel="stylesheet">
@@ -18,12 +18,17 @@
 
   </head>
 
-  <body>
+  <body class="p-0">
     
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<nav class="navbar navbar-expand-lg border-bottom bg-white">
   <div class="container">
-    <a class="navbar-brand" href="#">Tetra Laravel Cms</a>
+    <a class="navbar-brand" href="#">
+      <span class="font-weight-bold h4">
+          {{ setting('site.title') }}
+ 
+      </span>
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -55,18 +60,23 @@
   </div>
 </nav>
 
+
+
     @yield('content')
 
 
         <!-- Footer -->
         <footer class="py-5 bg-dark">
           <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+            <p class="m-0 text-center text-white">
+                {{ setting('site.copyrighttext') }}
+
+            </p>
           </div>
           <!-- /.container -->
         </footer>
     <!-- Bootstrap core JavaScript -->
-    <script src="{{ asset('frontend/js/app.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
   </body>
 
 </html>

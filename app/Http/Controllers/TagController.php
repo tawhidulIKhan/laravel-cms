@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Validator;
 
 class TagController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('permission:create_tags');
+    }   
+
     /**
      * Display a listing of the resource.
      *

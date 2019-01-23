@@ -20,9 +20,8 @@ class CreatePostsTable extends Migration
             $table->text('content')->nullable();
             $table->text('short_content')->nullable();
             $table->string('thumbnail',128)->nullable();
-            $table->unsignedInteger('user_id');
-            $table->enum('status',['publish','draft']);
-            $table->enum('type',['normal','audio','video']);
+            $table->unsignedInteger('user_id')->nullable();
+            $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
 

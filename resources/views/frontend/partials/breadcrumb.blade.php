@@ -1,7 +1,13 @@
-<section class="d-flex bg-primary py-5">
-    <div class="container text-center">
+<section class="d-flex py-5 bg-secondary">
+    <div class="container text-left">
         <div class="content">
-             <h2 class="text-white font-weight-bold">{{ $title }}</h2>
+             <h1 class="font-weight-bold text-white">{{ $title }}</h1>
+             <div class="d-flex p-0">
+                 <div class="col-4">
+                        <p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore odit sunt repellendus.</p>
+
+                 </div>
+             </div>
          </div>
                 
     </div>

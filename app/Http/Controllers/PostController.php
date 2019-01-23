@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('permission:create_posts');
+    }   
+
     /**
      * Display a listing of the resource.
      *

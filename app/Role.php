@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Permission;
 use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
@@ -15,7 +16,8 @@ class Role extends Model
         return $this->belongsToMany(User::class);
     }
 
-    public function getRouteKeyName(){
-        return 'slug';
+    public function permissions(){
+        return $this->belongsToMany(Permission::class);
     }
+
 }

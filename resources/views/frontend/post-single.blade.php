@@ -19,10 +19,25 @@
 
               <div class="post-meta border-top border-bottom py-3 mb-4">
                   Posted on {{ $post->created_at->diffForHumans() }} by
-                  <span class="text-primary"> {{ $post->user->username}}</span>
-              </div>
-              
-              <div class="comment-lists">
+                  by <a href="{{route('post.author',$post->user->username) }}">{{ $post->user->username }}</a>
+                </div>
+
+
+              <div class="post-meta border-bottom pb-3 mb-4">
+              <span>Categories : </span>
+                @foreach ($post->categories as $cat)
+              <a class="btn btn-link btn-sm text-uppercase" href="{{route('posts.category',$cat->slug)}}">{{ $cat->name }}</a>
+                @endforeach
+                <br>
+                <span>Tags : </span>
+                @foreach ($post->tags as $tag)
+              <a class="btn btn-link btn-sm text-uppercase" href="{{route('posts.tag',$tag->slug)}}">{{ $tag->name }}</a>
+                @endforeach
+          </div>
+
+
+
+                  <div class="comment-lists">
 
                         @include('frontend.partials.reply-lists',["comments" => $post->comments(),"post"=>$post]) 
 

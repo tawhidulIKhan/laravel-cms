@@ -50,3 +50,11 @@ reply.forEach(el =>
         e.preventDefault();
     })
 );
+
+let sidemenuOpener = document.querySelector("#sidebarToggle");
+let sidebar = document.querySelector(".dashboard-sidebar");
+
+sidemenuOpener.addEventListener("click", e => {
+    sidebar.classList.toggle("md-xs-hidden");
+    console.log(sidebar);
+});

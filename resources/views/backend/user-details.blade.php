@@ -24,8 +24,14 @@
             </tr>
         
             <tr>
-                    <th>Email</th>
-                    <td>{{ $user->role }}</td>
+                    <th>Role</th>
+                    <td>
+
+                        @foreach ($user->roles as $role)
+                            {{ $role->name }}
+                        @endforeach
+
+                    </td>
                 </tr>
             <tr>
                 <th>Actions</th>

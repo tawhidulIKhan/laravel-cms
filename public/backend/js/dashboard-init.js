@@ -113,27 +113,15 @@ $(document).ready(function () {
 
 /***/ }),
 
-/***/ "./resources/sass/backend-app.scss":
-/*!*****************************************!*\
-  !*** ./resources/sass/backend-app.scss ***!
-  \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ 0:
-/*!**********************************************************************************************************!*\
-  !*** multi ./resources/js/dashboard-init.js ./resources/sass/app.scss ./resources/sass/backend-app.scss ***!
-  \**********************************************************************************************************/
+/*!************************************************************************!*\
+  !*** multi ./resources/js/dashboard-init.js ./resources/sass/app.scss ***!
+  \************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! /home/www/laravel/cms/resources/js/dashboard-init.js */"./resources/js/dashboard-init.js");
-__webpack_require__(/*! /home/www/laravel/cms/resources/sass/app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! /home/www/laravel/cms/resources/sass/backend-app.scss */"./resources/sass/backend-app.scss");
+module.exports = __webpack_require__(/*! /home/www/laravel/cms/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

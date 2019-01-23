@@ -99,3 +99,15 @@ function cms_selected($post,$item){
 
     return ($post->categories && in_array($item->id,$post->categories->pluck('id')->toArray())) ? 'selected' : '';
 }
+
+
+function setting($key){
+    
+    try{
+        $value = DB::table('settings')->where('key',$key)->first()->value;
+        return $value;
+    }catch(Exception $e){
+        return;
+    }
+
+}

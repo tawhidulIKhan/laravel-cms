@@ -33,17 +33,24 @@
                                 <label>email</label>
                                 <input class="form-control" type="text" name="email" value="{{ $user->email }}">
                         </div>
+                        
+                        <div class="form-group">
+                                <label>password</label>
+                                <input class="form-control" type="password" name="password">
+                                <small>Leave this field for remain unchanged password</small>
+                        </div>
+                        <div class="form-group">
+                                <label>Confirm password</label>
+                                <input class="form-control" type="password" name="password_confirmation">
+                                <small>Leave this field for remain unchanged password</small>
+                        </div>
+
 
                         <div class="form-group">
                           <label for="thumbnail">Thumbnail</label>
                           <input type="file" class="form-control-file" name="thumbnail" id="thumbnail" placeholder="Profile photo" aria-describedby="fileHelpId">
                         </div>
 
-                        <div class="form-group">
-                                <label for="cover_photo">Cover Photo</label>
-                                <input type="file" class="form-control-file" name="cover_photo" id="cover_photo" placeholder="Profile photo" aria-describedby="fileHelpId">
-                              </div>
-                              
                         <button type="submit" class="btn btn-primary">Update</button>
                 </form>
     

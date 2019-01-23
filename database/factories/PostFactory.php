@@ -16,7 +16,5 @@ $factory->define(Post::class, function (Faker $faker) {
         'short_content' => $short_content,
         'thumbnail' => $faker->imageUrl(800,300),
         'user_id' => User::all()->random(),
-        'status' => 'publish',
-        'type' => 'normal'
     ];
 });

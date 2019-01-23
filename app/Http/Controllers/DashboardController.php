@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use App\User;
+use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -12,7 +14,10 @@ class DashboardController extends Controller
     // Show Dashboard
 
     public function dashboardShow(){
-        return view('/backend/index');
+        $data["total_post"] = count(Post::all()); 
+        $data["total_category"] = count(Category::all()); 
+        $data["total_user"] = count(User::all()); 
+        return view('/backend/index',$data);
     }
 
 
@@ -34,10 +39,9 @@ class DashboardController extends Controller
         
         $validator = Validator::make($request->all(),[
             'username' => 'required|min:4',
-            'firstname' => 'required|string',
-            'lastname' => 'required|string',
             'email' => 'required|email',
        ]);
+
 
         if($validator->fails()){
 
@@ -45,37 +49,49 @@ class DashboardController extends Controller
         }
 
 
+        if($request->password){
+            $validator = Validator::make($request->all(),[
+                'password' => 'confirm',
+           ]);
+    
+    
+            if($validator->fails()){
+                return redirect()->back()->withErrors($validator);
+            }
+    
+        }
+
+
+
+
         $thumbImgName = cms_image_process($request,'thumbnail');
 
-        $coverImgName = cms_image_process($request,'cover_photo');
 
 
         $user = User::find($id);
 
-        if($request->hasFile('cover_photo') && $request->hasFile('thumbnail')){
-            $user->update([
-                'username' => $request->username,
-                'firstname' => $request->firstname,
-                'lastname' => $request->lastname,
-                'email' => $request->email,
-                'thumbnail' => $thumbImgName,
-                'cover_photo' => $coverImgName,
-          ]);
-                  
-        Session::flash('type','success');
-        Session::flash('message','Your Profile Successfully Updated');
+        if($request->hasFile('thumbnail')){
 
-        return redirect()->route('user.profile');
+            if($request->password){
+                $user->update([
+                    'username' => $request->username,
+                    'firstname' => $request->firstname,
+                    'lastname' => $request->lastname,
+                    'password' => \bcrypt($request->password),
+                    'email' => $request->email,
+                    'thumbnail' => $thumbImgName,
+              ]);
 
-        }elseif($request->hasFile('thumbnail')){
-
-            $user->update([
-                'username' => $request->username,
-                'firstname' => $request->firstname,
-                'lastname' => $request->lastname,
-                'email' => $request->email,
-                'thumbnail' => $thumbImgName,
-          ]);
+            }else{
+                $user->update([
+                    'username' => $request->username,
+                    'firstname' => $request->firstname,
+                    'lastname' => $request->lastname,
+                    'email' => $request->email,
+                    'thumbnail' => $thumbImgName,
+              ]);
+    
+            }
 
                   
         Session::flash('type','success');
@@ -84,40 +100,33 @@ class DashboardController extends Controller
         return redirect()->route('user.profile');
     
 
-        }elseif($request->hasFile('cover_photo')){
-            $user->update([
-                'username' => $request->username,
-                'firstname' => $request->firstname,
-                'lastname' => $request->lastname,
-                'email' => $request->email,
-                'cover_photo' => $coverImgName,
-          ]);
-                  
-        Session::flash('type','success');
-        Session::flash('message','Your Profile Successfully Updated');
-
-        return redirect()->route('user.profile');
-
         }else{
-            $user->update([
-                'username' => $request->username,
-                'firstname' => $request->firstname,
-                'lastname' => $request->lastname,
-                'email' => $request->email,
-          ]);
+            if($request->password){
+                $user->update([
+                    'username' => $request->username,
+                    'firstname' => $request->firstname,
+                    'lastname' => $request->lastname,
+                    'password' => \bcrypt($request->password),
+                    'email' => $request->email,
+              ]);
+
+            }else{
+                $user->update([
+                    'username' => $request->username,
+                    'firstname' => $request->firstname,
+                    'lastname' => $request->lastname,
+                    'email' => $request->email,
+              ]);
 
                   
         Session::flash('type','success');
         Session::flash('message','Your Profile Successfully Updated');
 
         return redirect()->route('user.profile');
-
-        }
-
-
-
 
     }
+}
+}
 
     public function user_destroy($id)
     {
