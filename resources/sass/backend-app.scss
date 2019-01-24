@@ -8,6 +8,7 @@
 // Bootstrap
 @import "~bootstrap/scss/bootstrap";
 
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
 
 .navbar-laravel {
     background-color: #fff;
@@ -31,12 +32,13 @@
 .dashboard-sidebar {
     border-radius: 0;
     background-color: #2e2e2e;
-    width: 300px;
+    top: 0;
+    bottom: 0;
+    width: 250px;
     z-index: 1;
     transition: all 0.2s ease-in-out;
     padding-top: 23px;
     color: rgba(255, 255, 255, 0.5);
-    height: 100vh;
 
     /* Start Info Style */
 
