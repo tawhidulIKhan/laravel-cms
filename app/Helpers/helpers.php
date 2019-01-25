@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Input;
+use Intervention\Image\Facades\Image;
+
 function cms_notification($errors){
     
     if(session()->has('message')):
@@ -21,7 +24,7 @@ function cms_notification($errors){
 
 // Image Link
 
-function cms_thumbnail($name){
+function cms_thumbnail($name,$size=null){
 
     $link = substr($name,0,7);
 
@@ -31,11 +34,18 @@ function cms_thumbnail($name){
         return asset('storage/images/default.jpg');
 
     }
-    return asset('storage/images/'.$name);
+    
+    if($size){
+        return asset('storage/images/'.$size.'_'.$name);
+
+    }else{
+        return asset('storage/images/'.$name);
+        
+    }
 }
 
 
-function cms_image_process($request,$name){
+function cms_image_process($request,$name,$sizes=null){
 
     
     if($request->hasFile($name)){
@@ -50,9 +60,27 @@ function cms_image_process($request,$name){
         }
 
 
+
         $imgName = sprintf('%s.%s',str_random(10),$request->$name->extension());
-        
+
+        if(is_array($sizes)){
+
+
+            foreach($sizes as $size){
+            
+                foreach($size as $key=>$val){
+                    $thumb = sprintf('%s_%s',$key,$imgName);
+                    
+                    Image::make(Input::file($name))->resize($val[0], $val[1])->save(public_path('storage/images/'.$thumb));
+                }
+    
+            }
+    
+        }
+    
         $request->$name->storeAs('images',$imgName);
+
+       
 
 
     }else{

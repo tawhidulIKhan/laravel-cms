@@ -14,7 +14,7 @@ $factory->define(Post::class, function (Faker $faker) {
         'slug' => str_slug($title),
         'content' => $content,
         'short_content' => $short_content,
-        'thumbnail' => $faker->imageUrl(800,300),
+        'thumbnail' => $faker->imageUrl(800,400,'business'),
         'user_id' => User::all()->random(),
     ];
 });

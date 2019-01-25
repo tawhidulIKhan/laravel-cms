@@ -14,8 +14,7 @@
 
 Route::get('/','FrontendController@index')->name('home');
 Route::get('/posts/{slug}','FrontendController@postSingle')->name('post.single');
-Route::get('{author}/posts/','FrontendController@postAuthor')->name('post.author');
-Route::get('/page/{token}','FrontendController@page')->name('page');
+Route::get('/posts/author/{author}','FrontendController@postAuthor')->name('post.author');
 
 // Category Posts
 Route::get('/category/{slug}','FrontendController@categoryPosts')->name('posts.category');

@@ -23,7 +23,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg border-bottom bg-white">
   <div class="container">
-    <a class="navbar-brand" href="#">
+  <a class="navbar-brand" href="{{ route('home') }}">
       <span class="font-weight-bold h4">
           {{ setting('site.title') }}
  

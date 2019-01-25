@@ -13,7 +13,7 @@
         <div class="col-md-10 m-auto">
 
           <div class="content single-post w-100">
-              <img class="w-100" src="{{ cms_thumbnail($post->thumbnail) }}" alt="Card image cap">
+              <img class="img-fluid" src="{{ cms_thumbnail($post->thumbnail,'md') }}" alt="Card image cap">
               <h3 class="font-weight-bold my-4">{{ $post->title }}</h3>
               <p>{!! $post->content !!}</p>
 

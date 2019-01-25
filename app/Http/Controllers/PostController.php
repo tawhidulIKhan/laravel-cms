@@ -24,9 +24,8 @@ class PostController extends Controller
 
     public function index()
     {   
-        $data['posts'] = cache('posts',function(){
-            return Post::orderBy('created_at','desc')->paginate(10);
-        });
+        $data['posts'] = Post::latest()->paginate(10);
+    
         return view('backend/posts/index',$data);
     }
 
@@ -67,7 +66,10 @@ class PostController extends Controller
             return redirect()->back()->withErrors($validator);
         }
 
-        $imgName = cms_image_process($request,"thumbnail");
+        $imgName = cms_image_process($request,"thumbnail",["sizes"=>[
+            'sm' => [342,210],
+            'md' => [935,300]
+            ]]);
 
 
 
@@ -79,8 +81,6 @@ class PostController extends Controller
             'thumbnail' => $imgName,
             'user_id' => auth()->user()->id,
             'status' => $request->status,
-            'type' => $request->type,
-            
         ]);
 
         $post->tags()->attach($request->tags);

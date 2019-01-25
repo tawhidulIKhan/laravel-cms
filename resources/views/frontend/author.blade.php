@@ -16,7 +16,7 @@
               <div class="col-4">
                 <div class="shadow-sm bg-white m-1 mb-4">
 
-                <img class="w-100" height="200" src="{{ cms_thumbnail($post->thumbnail) }}" alt="Card image cap">
+                <img class="img-fluid" src="{{ cms_thumbnail($post->thumbnail,'sm') }}" alt="Card image cap">
                 <div class="content px-5 py-4">
 
                     <h5 class="mb-3">

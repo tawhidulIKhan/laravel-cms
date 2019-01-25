@@ -56,16 +56,8 @@
                  <div class="form-group my-3 bg-white shadow-sm p-3">
                     <label class="w-100">Post Status</label>
                     <select name="status"  class="form-control">
-                       <option value="draft">Draft</option>
-                       <option value="publish">Publish</option>
-                    </select>
-                 </div>
-                 <div class="form-group my-3 bg-white shadow-sm p-3">
-                    <label class="w-100">Post Type</label>
-                    <select name="type" class="form-control">
-                       <option value="normal">Normal</option>
-                       <option value="audio">Audio</option>
-                       <option value="video">Video</option>
+                       <option value="0">Draft</option>
+                       <option value="1">Publish</option>
                     </select>
                  </div>
                      
