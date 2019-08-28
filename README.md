@@ -1,7 +1,5 @@
 ## Laravel CMS
 
-[Live Demo](http://quiet-everglades-62462.herokuapp.com/)
-
 **Laravel Tetra CMS** is a content management system where you create category,tag,post,user,role,permission etc.
 
 ### Installation
